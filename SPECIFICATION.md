@@ -1,10 +1,16 @@
 # Hackathon specification
 
-## Inputs
+## Shared inputs
 
-- Three sample purchase orders with order ID, vendor, product, production country when known, manufacturer when known, and an import date when available.
-- The March 29 and September 10, 2021 CBP notices linked in the README. Record source URL, effective date, the cited passage, named manufacturer, and product and location scope.
+- An order CSV with order ID, vendor, product description, and optional product code, manufacturer, facility, production area, material origin, and import date. Preserve blanks as unknown.
+- Reviewed notice records with a source URL, cited passage, notice type, effective date, explicit link to any notice they update, and applicable entity, product, material, and geographic scope. Capture which date and origin facts each notice uses.
 - One sourced supplier relationship if accessible through the event's partner tools. Capture the parties, relationship type, date, and source reference.
+
+## Matching
+
+Resolve supplier identities with provider identifiers or analyst confirmation. Evaluate each applicable notice using its reviewed scope and the relevant dates. Surface orders as **Review**, **Evidence needed**, or **Outside this notice's scope** with the exact reason and citation. A missing required fact produces a targeted request. For example, ask for the cotton's origin when the order only identifies the garment's assembly location.
+
+Use two historical cases to check the design. The glove example uses a named manufacturer, product, and country. The cotton example uses a material and production region and should use a historical review date. [CBP historical cotton ruling](https://rulings.cbp.gov/ruling/H330077)
 
 ## Review screen
 

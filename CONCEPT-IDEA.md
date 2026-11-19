@@ -2,7 +2,7 @@
 
 ## Customer
 
-The first user is a trade-compliance analyst at a U.S. medical-supply importer or distributor. The first prospective buyer is the head of trade compliance. Validate the workflow by observing how an analyst connects a newly issued or amended notice to open purchase orders.
+The user is a trade-compliance analyst at a U.S. importer or distributor. The prospective buyer is the head of trade compliance. Medical supplies provide the first demo, and cotton provides a second test in a different industry. Validate the workflow by observing how an analyst connects a newly issued or amended notice to open purchase orders.
 
 ## Problem
 
