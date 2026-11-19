@@ -1,4 +1,14 @@
-# Supplier Alert Review
+# Trace Lithium
+
+**NYU × Microsoft Ethical Tech Hackathon · Critical minerals & strategic supply security**
+
+Can battery buyers verify where their lithium comes from and how it was produced? Compare three projects by water, regulatory oversight, and origin. Each review shows what a source supports and what evidence a buyer should request next. A live Tavily search discovers leads for extraction, refining, and recycling.
+
+Run `npm start` with Node.js 22 or later and open [Trace Lithium](http://127.0.0.1:3000/). Copy `.env.example` to `.env` and set `TAVILY_API_KEY` for keyed search. Git ignores the local file.
+
+The prototype uses three reviewed public sources. Search results are leads that require review. The next build step is to attach verified trade relationships between facilities and add dated monitoring or inspection records so a buyer can compare offers and spot a shared processor.
+
+## Earlier prototype · Supplier Alert Review
 
 **NYU × Microsoft Ethical Tech Hackathon · Forced labor & ethical sourcing**
 
@@ -17,7 +27,7 @@ The glove case is the first demo. A historical cotton example will test the same
 
 ## Run the glove case
 
-With Node.js 22 or later, run `npm start` and open [the local app](http://127.0.0.1:3000). No package installation is required.
+With Node.js 22 or later, run `npm start` and open [the glove demo](http://127.0.0.1:3000/gloves). No package installation is required.
 
 Select **Verify with Tavily** to search for each notice and extract text from the official document. The app uses keyless access by default. To use redeemed credits, copy `.env.example` to `.env`, set `TAVILY_API_KEY`, and restart the app. The key stays on the local server and Git ignores `.env`.
 

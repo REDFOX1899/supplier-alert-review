@@ -1,9 +1,14 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { gloveCase } from './public/case.mjs';
+import { discovery } from './public/minerals.mjs';
 
 const assets = new Map([
-  ['/', ['index.html', 'text/html; charset=utf-8']],
+  ['/', ['minerals.html', 'text/html; charset=utf-8']],
+  ['/gloves', ['index.html', 'text/html; charset=utf-8']],
+  ['/minerals.css', ['minerals.css', 'text/css; charset=utf-8']],
+  ['/minerals.mjs', ['minerals.mjs', 'text/javascript; charset=utf-8']],
+  ['/minerals-ui.mjs', ['minerals-ui.mjs', 'text/javascript; charset=utf-8']],
   ['/style.css', ['style.css', 'text/css; charset=utf-8']],
   ['/app.mjs', ['app.mjs', 'text/javascript; charset=utf-8']],
   ['/case.mjs', ['case.mjs', 'text/javascript; charset=utf-8']]
@@ -67,19 +72,47 @@ async function checkEvidence() {
   return { mode, checks: await Promise.all(gloveCase.notices.map(checkNotice)) };
 }
 
+function sendJson(res, status, data) {
+  res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+  res.end(JSON.stringify(data));
+}
+
+async function searchMinerals(res, stage) {
+  if (!Object.hasOwn(discovery, stage)) {
+    sendJson(res, 400, { error: 'Choose extraction, refining, or recycling.' });
+    return;
+  }
+  try {
+    const response = await tavily('search', {
+      query: discovery[stage],
+      search_depth: 'basic',
+      max_results: 5,
+      include_answer: false
+    });
+    const leads = (response.results ?? []).map(({ title, url, content }) => ({
+      title, url, content: content?.slice(0, 270)
+    }));
+    sendJson(res, 200, { leads });
+  } catch (error) {
+    sendJson(res, 502, { error: error.name === 'TimeoutError' ? 'Tavily timed out.' : error.message });
+  }
+}
+
 const server = createServer(async (req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  const path = req.url?.split('?')[0];
+  const [path, query] = req.url.split('?');
 
-  if (path === '/api/evidence' && req.method === 'POST') {
+  if ((path === '/api/evidence' || path === '/api/minerals') && req.method === 'POST') {
     if (req.headers.origin && req.headers.origin !== 'http://' + req.headers.host) {
       res.writeHead(403).end();
       return;
     }
+    if (path === '/api/minerals') {
+      await searchMinerals(res, new URLSearchParams(query).get('stage'));
+      return;
+    }
     activeCheck ??= checkEvidence().finally(() => { activeCheck = undefined; });
-    const result = await activeCheck;
-    res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
-    res.end(JSON.stringify(result));
+    sendJson(res, 200, await activeCheck);
     return;
   }
 
@@ -99,5 +132,5 @@ const server = createServer(async (req, res) => {
 
 const port = Number(process.env.PORT || 3000);
 server.listen(port, '127.0.0.1', () => {
-  console.log('Supplier Alert Review · http://127.0.0.1:' + port + ' · Tavily ' + mode);
+  console.log('Trace Lithium · http://127.0.0.1:' + port + ' · Tavily ' + mode);
 });

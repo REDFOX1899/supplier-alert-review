@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trace Lithium · Critical Minerals Sourcing Lab</title>
+  <link rel="stylesheet" href="/minerals.css">
+  <script type="module" src="/minerals-ui.mjs"></script>
+</head>
+<body>
+  <header><div class="wrap mast"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">Li</span> TRACE LITHIUM</a><span>NYU × MICROSOFT BUILD DAY</span></div></header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <div class="hero-copy">
+        <p class="eyebrow">CRITICAL MINERALS & STRATEGIC SUPPLY SECURITY</p>
+        <h1 id="title">Follow the<br><em>lithium.</em></h1>
+        <p class="question">Can a battery buyer verify where lithium comes from and how it was produced?</p>
+        <a class="jump" href="#review">Compare three projects ↓</a>
+      </div>
+      <div class="diagram" aria-label="Lithium project inputs, processes, and products">
+        <canvas id="terrain" aria-hidden="true"></canvas>
+        <p class="eyebrow">SELECTED PROJECT · MATERIAL FLOW</p>
+        <div class="flow" id="flow"></div>
+        <p class="flow-note">The diagram ends at each project’s output. Downstream links need evidence.</p>
+      </div>
+    </section>
+    <section class="lab" id="review" aria-labelledby="review-title">
+      <div class="section-heading"><h2 id="review-title">Review the evidence</h2><div id="lenses" class="lenses" aria-label="Evidence topics"></div></div>
+      <div id="site-list" class="site-list" aria-label="Lithium projects"></div>
+      <article id="reading" class="reading" aria-live="polite">
+        <div><p id="source-type" class="eyebrow"></p><h3 id="finding"></h3><p id="claim"></p><a id="source" target="_blank" rel="noopener noreferrer"></a></div>
+        <div class="request"><p class="eyebrow">WHAT TO ASK FOR</p><p id="request"></p></div>
+      </article>
+    </section>
+    <section class="search-lab" aria-labelledby="discover-title">
+      <div><p class="eyebrow">TAVILY · LIVE WEB SEARCH</p><h2 id="discover-title">Find more suppliers</h2><p>Search by supply-chain stage. Open a source to verify the company, facility, and output.</p></div>
+      <form id="discover">
+        <label for="stage">Supply-chain stage</label>
+        <div class="form-row">
+          <select id="stage"><option value="extraction">Extraction</option><option value="refining">Refining</option><option value="recycling">Recycling</option></select>
+          <button class="action">Search live</button>
+        </div>
+      </form>
+      <p id="search-status" role="status"></p>
+      <ul id="results"></ul>
+    </section>
+  </main>
+  <footer class="wrap"><span>Prototype · Evidence for sourcing decisions</span><a href="/gloves">Earlier glove demo ↗</a></footer>
+</body>
+</html>
