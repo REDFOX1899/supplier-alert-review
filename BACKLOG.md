@@ -1,7 +1,7 @@
 # Backlog
 
 - [x] Add a live Tavily Search and Extract check for the glove notices.
-- [ ] Verify Tavily retrieval with the redeemed API key. Keyless Search and Extract returned HTTP 429 during the live check.
+- [x] Verify Tavily retrieval with the redeemed API key. Search and PDF extraction passed for both notices.
 - [ ] Verify authenticated partner access and check one relevant relationship for dated evidence.
 - [ ] Define the shared CSV order format and reviewed notice schema.
 - [ ] Add the glove case and a historical cotton case that uses the same workflow.
