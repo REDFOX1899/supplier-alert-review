@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supplier Alert Review</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.mjs"></script>
+</head>
+<body>
+  <header class="top"><div class="wrap brand"><span class="mark" aria-hidden="true">≡</span> Supplier Alert Review <span class="track">Ethical sourcing</span></div></header>
+  <main class="wrap">
+    <section class="intro">
+      <div><p class="eyebrow">Historical case · United States</p><h1>Disposable gloves</h1><p>Review sample purchase orders against two CBP notices.</p></div>
+      <button id="check" class="action">Verify with Tavily</button>
+    </section>
+    <p id="verification" class="verification" role="status">Case loaded from reviewed Federal Register sources.</p>
+    <section class="timeline" aria-label="Historical review date">
+      <div><p class="eyebrow">Review date</p><output id="review-date"></output></div>
+      <div class="steps" aria-label="Review date presets">
+        <button data-date="2021-04-01">Apr 1 <span>After finding</span></button>
+        <button data-date="2021-09-10">Sep 10 <span>After determination</span></button>
+      </div>
+    </section>
+    <div class="layout">
+      <section class="panel" aria-labelledby="queue-title">
+        <div class="panel-header"><h2 id="queue-title">Order queue</h2><span>3 sample orders</span></div>
+        <div id="orders" class="orders" aria-label="Sample purchase orders"></div>
+      </section>
+      <section class="panel evidence" aria-labelledby="evidence-title">
+        <div class="panel-header"><h2 id="evidence-title">Order evidence</h2><span id="order-id"></span></div>
+        <div class="detail">
+          <span id="order-status" class="pill"></span>
+          <p id="reason" class="reason"></p>
+          <dl id="facts"></dl>
+          <div class="source" id="source">
+            <p class="eyebrow" id="source-date"></p>
+            <a id="source-link" target="_blank" rel="noopener noreferrer"></a>
+            <p id="source-summary"></p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer>Historical exercise · Order details are fictional. Evidence is limited to the displayed notices.</footer>
+  </main>
+</body>
+</html>

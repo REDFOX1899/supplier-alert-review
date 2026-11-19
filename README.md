@@ -12,9 +12,15 @@ The demo will use three labeled sample orders and two real public notices. Any p
 
 The glove case is the first demo. A historical cotton example will test the same workflow with a notice scoped to a material and region.
 
-- [CBP finding, March 29, 2021](https://www.govinfo.gov/content/pkg/FR-2021-03-29/pdf/2021-06393.pdf)
-- [CBP determination, September 10, 2021](https://www.govinfo.gov/content/pkg/FR-2021-09-10/pdf/2021-19617.pdf)
+- [CBP finding, March 29, 2021](https://www.govinfo.gov/content/pkg/FR-2021-03-29/html/2021-06393.htm)
+- [CBP determination, September 10, 2021](https://www.govinfo.gov/content/pkg/FR-2021-09-10/html/2021-19535.htm)
+
+## Run the glove case
+
+With Node.js 22 or later, run `npm start` and open [the local app](http://127.0.0.1:3000). No package installation is required.
+
+Select **Verify with Tavily** to search for each notice and extract text from the official document. The app uses keyless access by default. To use redeemed credits, copy `.env.example` to `.env`, set `TAVILY_API_KEY`, and restart the app. The key stays on the local server and Git ignores `.env`.
 
 ## Project status
 
-The repository contains the project brief, scope, and implementation backlog. See [the specification](SPECIFICATION.md) and [the backlog](BACKLOG.md).
+The glove case uses reviewed government records and fictional orders. The app reports live Tavily retrieval separately. See [the specification](SPECIFICATION.md) and [the backlog](BACKLOG.md) for partner data access and broader order intake.
